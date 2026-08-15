@@ -1,0 +1,12 @@
+[package]
+name = "edge-zero-trust-proxy"
+version = "0.1.0"
+edition = "2021"
+authors = ["Mary-Jane Davies <mjpunkin@outlook.com>"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+worker = { version = "0.8" }
+worker-macros = { version = "0.8" }

@@ -1,7 +1,7 @@
 use worker::*;
 
 #[event(start)]
-fn init() {
+fn start_init() {
     console_error_panic_hook::set_once();
 }
 

@@ -25,7 +25,7 @@ async fn reroute_req(req: Request, _state: RouteContext<()>) -> Result<Response>
     let upstream_url = format!("{}{}", upstream, req.path());
 
     let headers = req.headers().clone();
-    headers.set("X-Proxy", "EdgeZeroTrust")?;
+    headers.set("X-Proxy", "EdgeZeroTrust")?; // Temporary header rename
     headers.delete("Host")?;
 
     let method = req.method();

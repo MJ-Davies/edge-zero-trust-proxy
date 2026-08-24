@@ -9,5 +9,6 @@ crate-type = ["cdylib"]
 
 [dependencies]
 console_error_panic_hook = "0.1.7"
+serde = "1.0.229"
 worker = { version = "0.8" }
 worker-macros = { version = "0.8" }

@@ -1,4 +1,5 @@
 mod proxy;
+mod utils;
 
 use worker::*;
 use proxy::*;

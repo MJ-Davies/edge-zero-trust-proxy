@@ -20,6 +20,7 @@ pub struct AiResponse {
 pub async fn analyze_payload(env: &Env, payload_str: &str) -> Result<String> {
     
     let ai = env.ai("AI")?;
+    let ai_model = env.var("AI_MODEL")?.to_string();
     
     let ai_req = AiRequest {
         messages: vec![
@@ -34,7 +35,7 @@ pub async fn analyze_payload(env: &Env, payload_str: &str) -> Result<String> {
         ]
     };
 
-    let ai_result: AiResponse = ai.run("@cf/meta/llama-4-scout-17b-16e-instruct", &ai_req).await?;
+    let ai_result: AiResponse = ai.run(&ai_model, &ai_req).await?;
 
     Ok(ai_result.response)
 }

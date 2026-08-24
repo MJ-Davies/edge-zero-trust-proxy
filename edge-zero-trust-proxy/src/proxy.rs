@@ -32,7 +32,7 @@ pub async fn reroute_req(mut req: Request, state: RouteContext<()>) -> Result<Re
         }
     }
 
-    let upstream = "http://127.0.0.1:8788"; 
+    let upstream = state.env.var("UPSTREAM_URL")?.to_string(); 
     let upstream_url = format!("{}{}", upstream, req.path());
 
     let mut headers = req.headers().clone();

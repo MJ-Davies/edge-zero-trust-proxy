@@ -16,13 +16,11 @@ async fn fetch(
     _ctx: Context,
 ) -> Result<Response> {
     Router::new()
-        .get("/", |_, _| {
-            Response::ok("Hello World!")
-        })
-        .get("/health", |_, _| {
+        .get("/proxyHealth", |_, _| {
             Response::ok("Edge zero trust proxy server is running")
         })
         .on_async("/*path", reroute_req)
+        .on_async("/", reroute_req)
         .run(req, env)
         .await
 }

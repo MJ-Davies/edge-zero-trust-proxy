@@ -9,6 +9,8 @@ crate-type = ["cdylib"]
 
 [dependencies]
 console_error_panic_hook = "0.1.7"
+jsonwebtoken = "11.0.0"
+getrandom = { version = "0.2", features = ["js"] }
 serde = "1.0.229"
 worker = { version = "0.8" }
 worker-macros = { version = "0.8" }

@@ -1,5 +1,6 @@
 use worker::*;
 use crate::utils::ai::*;
+use crate::utils::auth::*;
 
 pub async fn req_debug(req: Request) -> Result<String> {
     let mut out = String::new();
@@ -16,6 +17,12 @@ pub async fn req_debug(req: Request) -> Result<String> {
 }
 
 pub async fn reroute_req(mut req: Request, state: RouteContext<()>) -> Result<Response> {
+    // Authorization (remove if not using Cloudflare Zero Trust)
+    match verify_identity(&req, &state.env).await {
+        Ok(email) => email,
+        Err(_) => return Response::error("Unauthorized: Zero Trust Perimeter Violation", 401),
+    };
+    
     let method = req.method();
 
     let body_bytes = match method {

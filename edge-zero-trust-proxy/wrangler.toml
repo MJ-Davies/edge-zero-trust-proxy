@@ -11,5 +11,7 @@ binding = "AI"
 remote = true
 
 [vars]
-UPSTREAM_URL = "http://127.0.0.1:8788"
+UPSTREAM_URL = "http://127.0.0.1:8788" # Backend URL for accessing API
 AI_MODEL = "@cf/meta/llama-4-scout-17b-16e-instruct"
+TEAM_DOMAIN = "https://team-domain.cloudflareaccess.com" # Your Cloudflare Zero Trust team domain
+AUD_TAG = "BLANK" # Your Cloudflare Zero Trust AUD tag after adding proxy as an application to Zero Trust

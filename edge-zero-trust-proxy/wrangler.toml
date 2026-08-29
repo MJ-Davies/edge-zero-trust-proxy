@@ -1,9 +1,10 @@
 name = "edge-zero-trust-proxy"
 main = "build/index.js"
 compatibility_date = "2026-08-15"
+compatibility_flags = ["global_fetch_strictly_public"]
 
 [build]
-command = "cargo install -q \"worker-build@^0.8\" && worker-build --release --panic-unwind"
+command = "cargo install -q \"worker-build@^0.8\" && worker-build --release"
 
 [ai]
 binding = "AI"

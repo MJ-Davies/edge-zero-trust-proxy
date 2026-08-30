@@ -84,7 +84,12 @@
         "packages": {},
         "requests": {},
         "exec": [
-          ""
+          "let jwtToken = pm.variables.get(\"cloudflare_jwt\");\r",
+          "\r",
+          "pm.request.headers.add({\r",
+          "    key: 'Cf-Access-Jwt-Assertion',\r",
+          "    value: jwtToken\r",
+          "});"
         ]
       }
     },
@@ -103,6 +108,10 @@
   "variable": [
     {
       "key": "domain",
+      "value": ""
+    },
+    {
+      "key": "cloudflare_jwt",
       "value": ""
     }
   ]

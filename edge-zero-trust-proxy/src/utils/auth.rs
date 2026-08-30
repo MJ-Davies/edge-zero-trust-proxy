@@ -13,7 +13,7 @@ pub async fn fetch_jwks(env: &Env) -> Result<JwkSet> {
     let team_domain = env.var("TEAM_DOMAIN")?.to_string();
     let certs_url = format!("{}/cdn-cgi/access/certs", team_domain);
     
-    let mut req = Request::new(&certs_url, Method::Get)?;
+    let req = Request::new(&certs_url, Method::Get)?;
     let mut res = Fetch::Request(req).send().await?;
     
     let jwks: JwkSet = res.json().await.map_err(|e| Error::RustError(e.to_string()))?;

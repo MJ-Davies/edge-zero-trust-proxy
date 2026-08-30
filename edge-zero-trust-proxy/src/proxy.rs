@@ -2,7 +2,7 @@ use worker::*;
 use crate::utils::ai::*;
 use crate::utils::auth::*;
 
-pub async fn req_debug(req: Request) -> Result<String> {
+pub async fn _req_debug(req: Request) -> Result<String> {
     let mut out = String::new();
 
     out.push_str("========= HEADERS =========\n");
@@ -42,7 +42,7 @@ pub async fn reroute_req(mut req: Request, state: RouteContext<()>) -> Result<Re
     let upstream = state.env.var("UPSTREAM_URL")?.to_string(); 
     let upstream_url = format!("{}{}", upstream, req.path());
 
-    let mut headers = req.headers().clone();
+    let headers = req.headers().clone();
     headers.set("X-Proxy", "EdgeZeroTrust")?; 
     headers.delete("Host")?;
 
